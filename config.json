@@ -23,9 +23,9 @@
     "fecha":       "2025-01-01",
 
     "tracks": [
-      { "id": "A", "nombre": "A", "drive_url": "https://drive.google.com/uc?export=download&id=ID_DEL_ARCHIVO" },
-      { "id": "B", "nombre": "B", "drive_url": "https://drive.google.com/uc?export=download&id=ID_DEL_ARCHIVO" },
-      { "id": "C", "nombre": "C", "drive_url": "https://drive.google.com/uc?export=download&id=ID_DEL_ARCHIVO" }
+      { "id": "A", "nombre": "A", "drive_url": "https://drive.google.com/uc?export=download&id=1jmLS5CeHf6C1xh8zH7SKy5tPmjUkpSuW" },
+      { "id": "B", "nombre": "B", "drive_url": "https://drive.google.com/uc?export=download&id=1vdwMoAhXJOr1aLQclYh09bo3v" },
+      { "id": "C", "nombre": "C", "drive_url": "https://drive.google.com/uc?export=download&id=1s3xZliDiyAWcd9bsdwZjfPcdRDeK29ET" }
     ]
   }
 }
