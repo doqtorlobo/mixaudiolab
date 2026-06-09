@@ -1,0 +1,31 @@
+{
+  "app_name": "MixAudioLab MixOff",
+
+  "admins": [
+    "tuemail@gmail.com",
+    "admin2@gmail.com",
+    "admin3@gmail.com"
+  ],
+
+  "firebase": {
+  "apiKey":            "AIzaSyBvBN0WvWnK_KxAZ_nPAopCVkh7xjCqLQ8",
+  "authDomain":        "mixaudiolab-nanodaw.firebaseapp.com",
+  "projectId":         "mixaudiolab-nanodaw",
+  "storageBucket":     "mixaudiolab-nanodaw.firebasestorage.app",
+  "messagingSenderId": "1059975589929",
+  "appId":             "1:1059975589929:web:669df20336d204d1b06c38"
+},
+
+  "ronda": {
+    "numero":      1,
+    "nombre":      "Ronda 1",
+    "descripcion": "Primera contienda de mezclas",
+    "fecha":       "2025-01-01",
+
+    "tracks": [
+      { "id": "A", "nombre": "A", "drive_url": "https://drive.google.com/uc?export=download&id=ID_DEL_ARCHIVO" },
+      { "id": "B", "nombre": "B", "drive_url": "https://drive.google.com/uc?export=download&id=ID_DEL_ARCHIVO" },
+      { "id": "C", "nombre": "C", "drive_url": "https://drive.google.com/uc?export=download&id=ID_DEL_ARCHIVO" }
+    ]
+  }
+}
