@@ -1,3 +1,8 @@
+bash
+
+cat /mnt/user-data/outputs/mixaudiolab/index.html
+Output
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -361,7 +366,7 @@ async function enterApp() {
   document.getElementById('round-badge').textContent = rnd.nombre + ' · ' + rnd.fecha;
   document.getElementById('user-nm').textContent = user.displayName || user.email;
   const av = document.getElementById('user-av');
-  if (user.photoURL) { av.innerHTML=`<img src="${user.photoURL">`; }
+  if (user.photoURL) { av.innerHTML=`<img src="${user.photoURL}">`; }
   else av.textContent = (user.displayName||user.email||'?')[0].toUpperCase();
   if (isAdmin) { document.getElementById('admin-badge').style.display=''; document.getElementById('admin-panel').style.display=''; }
 
@@ -798,3 +803,5 @@ init();
 </script>
 </body>
 </html>
+Done
+Ahora hacé esto:
