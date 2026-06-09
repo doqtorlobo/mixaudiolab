@@ -20,7 +20,7 @@
     "numero":      1,
     "nombre":      "Ronda 5",
     "descripcion": "Primera contienda de mezclas",
-    "fecha":       "2025-01-01",
+    "fecha":       "2026-07-09",
 
     "tracks": [
       { "id": "A", "nombre": "A", "drive_url": "https://drive.google.com/uc?export=download&id=15WtAHkBeTtEpY6RvAPE3KoxhzSCAW-ih" },
