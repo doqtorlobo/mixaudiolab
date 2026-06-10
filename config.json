@@ -23,9 +23,9 @@
     "fecha":       "2026-06-10",
 
     "tracks": [
-      { "id": "A", "nombre": "A", "archivo": "A.wav" },
-      { "id": "B", "nombre": "B", "archivo": "B.wav" },
-      { "id": "C", "nombre": "C", "archivo": "C.wav" }
+      { "id": "A", "nombre": "A", "archivo": "https://pub-2a2b8eaee5724248aa6afbaf879a0792.r2.dev/A.wav" },
+      { "id": "B", "nombre": "B", "archivo": "https://pub-2a2b8eaee5724248aa6afbaf879a0792.r2.dev/B.wav" },
+      { "id": "C", "nombre": "C", "archivo": "https://pub-2a2b8eaee5724248aa6afbaf879a0792.r2.dev/C.wav" }
     ]
   }
 }
