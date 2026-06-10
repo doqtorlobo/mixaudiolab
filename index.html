@@ -384,7 +384,7 @@ async function enterApp() {
 async function loadTrack(def, idx) {
   let buffer;
   try {
-    const ab = await (await fetch('./' + def.archivo)).arrayBuffer();
+    const ab = await (await fetch(def.archivo)).arrayBuffer();
     buffer = await audioCtx.decodeAudioData(ab);
   } catch(e) { toast('Error cargando '+def.nombre, true); return; }
 
@@ -487,7 +487,7 @@ function buildTrackEl(track, idx) {
           </div>
           <span class="fader-db zero">0 dB</span>
         </div>
-        <a class="btn-dl" href="./${track.archivo}" download="${track.nombre}.wav">&#8659; WAV</a>
+        <a class="btn-dl" href="${track.archivo}" download="${track.nombre}.wav">&#8659; WAV</a>
       </div>
     </div>
     <div class="wave-area" data-id="${track.id}">
