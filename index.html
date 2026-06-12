@@ -291,7 +291,7 @@ import { getFirestore, doc, setDoc, onSnapshot, collection, deleteDoc, serverTim
 let CFG=null, db=null, auth=null, user=null, isAdmin=false;
 let audioCtx=null, tracks=[], isPlaying=false;
 let playStartCtx=0, playStartOff=0, maxDur=0, rafId=null, soloId=null;
-let votesCache={}, pendingVote=null;
+let votesCache={};
 const PIE_COLORS=['#7c6cfa','#06d6a0','#fbbf24','#f43f5e','#38bdf8','#fb923c','#a3e635','#e879f9'];
 
 // ── dB FADER MATH ──
@@ -677,42 +677,28 @@ function updateVoteUI(open){
   badge.textContent=open?'ABIERTA':'CERRADA';
   badge.className='vote-status '+(open?'open':'closed');
   if(!open){body.innerHTML='<div class="vote-closed-msg">La votación está cerrada.</div>';return;}
-
-  const confirmed=votesCache[user.uid]?.confirmed||false;
   const myVote=votesCache[user.uid]?.track||null;
-
-  if(confirmed){
-    body.innerHTML=`<div class="vote-closed-msg" style="color:var(--accent3)">✓ Tu voto <strong style="font-family:var(--font-mono)">${myVote}</strong> fue confirmado.</div>`;
-    return;
-  }
-
   const defs=CFG.ronda.tracks;
-  let h=`<p class="vote-instruction">Elegí la mejor mezcla. Podés cambiar tu selección hasta que confirmes con <strong>Enviar</strong>.</p><div class="vote-grid">`;
+  let h=`<p class="vote-instruction">Elegí la mejor mezcla de esta ronda. Un solo voto — podés cambiarlo o anularlo.</p><div class="vote-grid">`;
   defs.forEach(d=>{
-    const sel=(pendingVote||myVote)===d.id?'selected':'';
-    h+=`<button class="vote-btn ${sel}" onclick="selectVote('${d.id}')">${d.nombre}</button>`;
+    const sel=myVote===d.id?'selected':'';
+    h+=`<button class="vote-btn ${sel}" onclick="castVote('${d.id}')">${d.nombre}</button>`;
   });
   h+=`</div>`;
-  const cur=pendingVote||myVote;
-  if(cur) h+=`<div class="vote-cur">Selección: <strong>${cur}</strong></div>`;
-  h+=`<button class="btn-t" id="btn-enviar" style="margin-top:10px;background:var(--accent3);border-color:var(--accent3);color:#000;font-weight:700" onclick="confirmVote()" ${cur?'':'disabled'}>Enviar voto</button>`;
+  if(myVote) h+=`<div class="vote-cur">Tu voto: <strong>${myVote}</strong> <button class="btn-annul" onclick="annulVote()">Anular</button></div>`;
   body.innerHTML=h;
 }
 
-window.selectVote=function(id){
-  pendingVote=id;
-  updateVoteUI(true);
-};
-
-window.confirmVote=async function(){
-  const id=pendingVote||votesCache[user.uid]?.track;
-  if(!id)return;
+window.castVote=async id=>{
   try{
     await setDoc(doc(db,'rounds','ronda_'+CFG.ronda.numero,'votes',user.uid),
-      {track:id,confirmed:true,user_name:user.displayName||user.email,user_email:user.email,timestamp:serverTimestamp()});
-    pendingVote=null;
-    toast('✓ Voto confirmado: '+id);
+      {track:id,user_name:user.displayName||user.email,user_email:user.email,timestamp:serverTimestamp()});
+    toast('Voto registrado: '+id);
   }catch(e){toast('Error: '+e.message,true);}
+};
+window.annulVote=async()=>{
+  try{ await deleteDoc(doc(db,'rounds','ronda_'+CFG.ronda.numero,'votes',user.uid)); toast('Voto anulado'); }
+  catch(e){toast('Error: '+e.message,true);}
 };
 
 // ── ADMIN ──
